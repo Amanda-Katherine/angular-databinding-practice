@@ -14,11 +14,28 @@
     Upon clicking the button, the username should be reset to an empty string
   </li>
 </ol>
+<hr />
+<div class="col-xs-12">
+  <label>Username:</label>
+  <input type="text" [(ngModel)]="username" (input)="onUsernameInput($event)" />
 
-<label>Username:</label>
-<input type="text" [(ngModel)]="username" (input)="onUsernameInput($event)" />
+  <p>Hello {{ username }}</p>
 
-<p>Hello {{ username }}</p>
-<button [disabled]="!usernameExists" (click)="resetUsername()">
-  Reset Username
-</button>
+  <!-- option one button -->
+  <!-- <button
+    class="btn btn-primary"
+    [disabled]="!usernameExists"
+    (click)="resetUsername()"
+    >
+    Reset Username
+  </button> -->
+
+  <!-- option 2 button -->
+  <button
+    class="btn btn-primary"
+    [disabled]="username === ''"
+    (click)="username = ''"
+  >
+    Reset Username
+  </button>
+</div>
